@@ -1,0 +1,21 @@
+name: First workflow
+on:
+  push:
+    branches: [ main ]
+jobs:
+    CI:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: install dependencies
+              run: npm ci
+            - name: run Lint
+              run: npm run lint
+            - name: run tests
+              run: npm test 
+            - name: build
+              run: npm run build
+            - name: Deploy
+              run: echo "Deployed to production server..."
+            
